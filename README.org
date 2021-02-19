@@ -1,0 +1,51 @@
+* Change-Point-Detection
+Python3 version 3.6.1 or greater is REQUIRED
+
+** 1. Environment setup
+These steps assume a linux system.
+*** 1.1. First clone the repo 
+git clone @github.com/superMicrowave/Change-Point-Detection
+*** 1.2. In new terminal, load modules
+#+BEGIN_SRC
+module load anaconda3
+
+*** 1.3. Create environment
+#+BEGIN_SRC
+conda create -n myenv
+#+END_SRC
+
+*** 1.4 Activate environment
+#+BEGIN_SRC
+conda activate myenv 
+#+END_SRC
+*** 1.5 Install packages needed for project
+#+BEGIN_SRC
+conda install pytorch torchvision cpuonly -c pytorch
+#+END_SRC
+#+BEGIN_SRC
+conda install -c conda-forge pandana
+#+END_SRC
+#+BEGIN_SRC
+conda install -c conda-forge matplotlib
+#+END_SRC
+
+** 2. Environment already built
+use following command to start environment
+#+BEGIN_SRC
+module load anaconda3
+#+END_SRC
+#+BEGIN_SRC
+conda activate myenv
+#+END_SRC
+
+** 3. create job
+*** 3.1 create interactive job
+#+BEGIN_SRC
+srun -t 24:00:00 --mem=4GB --cpus-per-task=1 --pty bash 
+#+END_SRC
+*** 3.2 open job_arr.sh
+*** 3.3 srun python3 file.name $argv
+*** 3.4 sbatch job_arr.sh
+
+** 4. Result
+*** https://github.com/superMicrowave/Change-Point-Detection/blob/master/test_accuracy.png
