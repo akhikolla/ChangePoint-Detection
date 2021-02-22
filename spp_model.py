@@ -17,8 +17,6 @@ class convNet_2(nn.Module):
         self.layer4 = nn.Sequential(
             nn.Linear(128, 1)
         )
-        
-    
     def forward(self, x):
         x = self.layer1(x)
         x = self.pool(x)
@@ -431,9 +429,10 @@ class convNet_5_act(nn.Module):
         for s in size:
             num_features *= s
         return num_features
-    
+
+device = torch.device("cpu") 
 model_list = []
 model_class = [convNet_2(), convNet_2_act(), convNet_3(), convNet_3_act(), convNet_4(), convNet_4_act(), 
-               convNet_5(), convNet_5_act(),convNet_2_1fc,convNet_2_1fc]
+               convNet_5(), convNet_5_act(),convNet_2_1fc(),convNet_2_1fc()]
 for model in model_class:
     model_list.append(model.to(device))

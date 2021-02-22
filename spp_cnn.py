@@ -4,72 +4,6 @@ Created on Mon Oct  5 09:34:25 2020
 
 @author: 22602
 """
-
-"""
-epoch = 10
-systematic testfold- 1 models 0-8
-[97.71929824561404,97.54385964912281,97.71929824561404,97.89473684210527,98.24561403508771,98.24561403508771,
- 97.71929824561404,98.0701754385965]
-0-8 models testfold 2
-[98.24561403508771,
- 98.24561403508771,
- 98.0701754385965,
- 98.42105263157895,
- 98.42105263157895,
- 97.89473684210527,
- 97.36842105263158,
- 98.24561403508771]
-testfold - 3 
-[97.89473684210527,
- 97.54385964912281,
- 98.0701754385965,
- 97.54385964912281,
- 97.36842105263158,
- 98.0701754385965,
- 97.36842105263158,
- 97.19298245614036]
-testfold - 4
-
-[98.24561403508771,
- 98.24561403508771,
- 98.24561403508771,
- 98.0701754385965,
- 97.54385964912281,
- 98.0701754385965,
- 98.24561403508771,
- 98.24561403508771]
-
-testfold-5
-[97.89103690685414,
- 98.41827768014059,
- 98.06678383128296,
- 98.59402460456941,
- 97.89103690685414,
- 98.24253075571178,
- 98.06678383128296,
- 98.24253075571178]
-
-testfold- 6
-[97.18804920913884,
- 96.48506151142355,
- 96.8365553602812,
- 96.8365553602812,
- 97.01230228471002,
- 97.01230228471002,
- 97.01230228471002,
- 97.36379613356766]
-
-
-detailed - reduced accuracy <- 
-[94.04186795491142,
- 93.39774557165862,
- 93.88083735909822,
- 94.20289855072464,
- 94.20289855072464,
- 94.20289855072464,
- 94.20289855072464,
- 94.36392914653784]
-"""
 ## import package
 #from function import *
 import sys
@@ -80,12 +14,20 @@ from spp_model import *
 
 ## load the realating csv file
 # get command line argument length.
+device = torch.device("cpu") 
 split_list = []
 #dir_path = "/Users/akhilachowdarykolla/Desktop/neuroblastoma-data/data/detailed/cv/sequenceID/testFolds/6" 
 # for i in 1:
 accurays = []
-for i in range(0,8):
-    dir_path = "/Users/akhilachowdarykolla/Desktop/neuroblastoma-data/data/detailed/cv/sequenceID/testFolds/2"
+dir_path =sys.argv[1]
+print(dir_path)
+
+for j in range(0,10):
+    print(model_list[j])
+
+for i in range(0,10):
+    #dir_path = sys.argv[1]
+    print(dir_path) #"/Users/akhilachowdarykolla/Desktop/neuroblastoma-data/data/detailed/cv/sequenceID/testFolds/2"
     model_id = str(i)
     
     ## load the realating csv file

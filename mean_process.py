@@ -15,7 +15,7 @@ from impfun import *
 # get command line argument length.
 
 #dir_path = "/Users/akhilachowdarykolla/Desktop/neuroblastoma-data/data/detailed/"
-dir_path = "/Users/akhilachowdarykolla/Desktop/neuroblastoma-data/data/systematic"
+dir_path = "neuroblastoma-data/data/detailed"
 
 ## load the realating csv file
 dir_path_split = dir_path.split("/cv/")

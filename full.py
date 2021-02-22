@@ -16,19 +16,17 @@ class Full:
         self.valid_data = valid_data
         self.valid_label = valid_label
         self.epoch = epoch
-    
+
     def __call__(self):
-        
         valid_losses = [];
         valid_outputs = [];
         ## train the network
         # loop through number of epoch
         for epoch in range(self.epoch):  
-            self.model.train()   
-    
+            self.model.train()
             # zero the parameter gradients, init weight
             self.optimizer.zero_grad()
-    
+
             # get output from our model, Y = f(wx)
             outputs = self.model(self.subtrain_data)
             # compute loss, loss = L(f(wx), y)
@@ -37,12 +35,11 @@ class Full:
             loss.backward()
             # update w. w = w – delta*w
             self.optimizer.step()
-        
+
             with torch.no_grad():
                self.model.eval()
-               valid_outputs = self.model(self.valid_data)                    
+               valid_outputs = self.model(self.valid_data)
                valid_loss = self.criterion(valid_outputs, self.valid_label)
 
             valid_losses.append(valid_loss.cpu().data.numpy())
-        
         return valid_losses, valid_outputs

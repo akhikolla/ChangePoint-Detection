@@ -16,7 +16,8 @@ from function import *
 ## load the realating csv file
 # get command line argument length.
 #dir_path = "/Users/akhilachowdarykolla/Desktop/neuroblastoma-data/data/detailed/cv/sequenceID/testFolds/6"
-dir_path = "/Users/akhilachowdarykolla/Desktop/neuroblastoma-data/data/systematic/cv/sequenceID/testFolds/6"
+dir_path = sys.argv[1] 
+#"/Users/akhilachowdarykolla/Desktop/neuroblastoma-data/data/systematic/cv/sequenceID/testFolds/6"
 
 ## load the realating csv file
 dir_path_split = dir_path.split("cv")

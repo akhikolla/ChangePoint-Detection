@@ -5,6 +5,7 @@
 #SBATCH --time=0-15:72:00
 #SBATCH --array=1-130
 
-argv=$(awk "NR==${SLURM_ARRAY_TASK_ID}" train_arg.txt)
 
-srun python3 spp_cnn.py $argv
+argv=$(awk "NR==${SLURM_ARRAY_TASK_ID}" ts.txt)
+
+srun python3 newaccuracy.py $argv

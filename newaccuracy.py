@@ -32,9 +32,13 @@ def SplitFolder(labels, folders, fold_id):
 
 # get command line argument length.
 #dir_path = "/Users/akhilachowdarykolla/Desktop/neuroblastoma-data/data/systematic/cv/sequenceID"
-dir_path = "/Users/akhilachowdarykolla/Desktop/neuroblastoma-data/data/detailed/cv/sequenceID"
+dir_path =sys.argv[1] 
+
+
+#"/Users/akhilachowdarykolla/Desktop/neuroblastoma-data/data/detailed/cv/sequenceID"
 ## load the realating csv file
 dir_path_split = dir_path.split("/cv/")
+print(dir_path_split[1])
 labels_path = dir_path_split[0] + "/outputs.csv.xz"
 folds_path = dir_path + "/folds.csv"
 input_path = dir_path + "/testFolds"
@@ -50,7 +54,7 @@ _, cor_index = np.where(labels[:, 0, None] == folds[:, 0])
 folds_sorted = folds[cor_index] # use for first split
 
 spp_type_list = ["convNet_2","convNet_2_act","convNet_3","convNet_3_act","convNet_4","convNet_4_act","convNet_5", 
-                 "convNet_5_act"]
+                 "convNet_5_act","convNet_2_1fc","convNet_2_1fc"]
 
 model_name_list = []
 # get name of all the model
@@ -140,7 +144,8 @@ plt.ylabel("algorithm")
 plt.tight_layout()
 main_name = main_path_split[1]
 sub_name = dir_path_split[1]
-plt.savefig('/Users/akhilachowdarykolla/Desktop/plot_folder/' + main_name + '_' + sub_name + '.png')
+print('plot_folder/' + main_name + '_' + sub_name + '.png')
+plt.savefig('plot_folder/' + main_name + '_' + sub_name + '.png')
 #plt.savefig("SS_linear_accuracy.png")
 plt.title(main_name + '_' + sub_name)
 

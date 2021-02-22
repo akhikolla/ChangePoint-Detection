@@ -8,7 +8,7 @@ import pandas as pd
 ## load the realating csv file
 # get command line argument length.
 #dir_path = "/Users/akhilachowdarykolla/Desktop/neuroblastoma-data/data/detailed"
-dir_path = "/Users/akhilachowdarykolla/Desktop/neuroblastoma-data/data/systematic" #"/cv/sequenceID/testFolds/1"
+dir_path ="neuroblastoma-data/data/detailed" #"/cv/sequenceID/testFolds/1"
 
 ## load the realating csv file
 labels_path = dir_path + "/outputs.csv.xz"

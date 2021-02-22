@@ -23,7 +23,11 @@ def SplitFolder(labels, folders, fold_id):
     return train_label, test_label
 
 # get command line argument length.
-dir_path = "/Users/akhilachowdarykolla/Desktop/neuroblastoma-data/data/systematic/cv/sequenceID"
+
+dir_path = sys.argv[1]
+
+#"/Users/akhilachowdarykolla/Desktop/neuroblastoma-data/data/systematic/cv/sequenceID"
+
 ## load the realating csv file
 dir_path_split = dir_path.split("/cv/")
 labels_path = dir_path_split[0] + "/outputs.csv.xz"
@@ -56,24 +60,24 @@ print(model_name_list)
 model_list = []
 for name in model_name_list:
     file_list = []
-    for file_path in glob.glob( input_path + "/*/randomTrainOrderings/1/models/" 
-                          + name + "/predictions.csv"):
-        print(file_path)
+    if(name == "spp")
+    path = glob.glob( input_path + "/*/randomTrainOrderings/1/models/" 
+                          + name + "/predictions.csv")
+    for file_path in path:
+        #print(file_path)
         #get last column of each file
         df = pd.read_csv(file_path).iloc[:, -1].values
         file_list.append(df)
-
     num_test = len(file_list)
     #print(num_test)
-    print(file_list)   
-
+    #print(file_list)   
     accuracy_list = []
     # calculate accuracy
     for fold_num in range(num_test):
         _, fold_lab = SplitFolder(labels, folds_sorted[:, 1], fold_num + 1)
         acc = 0
         for (data, label) in zip(file_list[fold_num], fold_lab):
-            print(data)
+            #print(data)
             label = label.reshape(2)
             acc += Accuracy(data, label)
         
@@ -88,9 +92,9 @@ model_list = np.array(model_list,dtype=object)
 model_accuracy = model_list[:, 0]
 model_name = model_list[:, 1]
 
-print(num_model)
+#print(num_model)
 print(model_accuracy[index])
-print(num_test * [model_name[index]])
+#print(num_test * [model_name[index]])
 # for index in range(num_model):
 #     plt.scatter(model_accuracy[index], num_test * [model_name[index]], color = "black")
 # plt.xlabel("accuracy.percent %")
@@ -101,7 +105,15 @@ print(num_test * [model_name[index]])
 # plt.savefig('/Users/akhilachowdarykolla/Desktop/plot_folder/' + main_name + '_' + sub_name + '.png')
 # #plt.savefig("SS_linear_accuracy.png")
 # plt.title(main_name + '_' + sub_name)
-    
-    
-    
+
+for index in range(num_model):
+    plt.scatter(model_accuracy[index], num_test * [model_name[index]], color = "black")
+plt.xlabel("accuracy.percent %")
+plt.ylabel("algorithm")
+plt.tight_layout()
+main_name = main_path_split[1]
+sub_name = dir_path_split[1]
+plt.savefig('plot_folder/' + main_name + '_' + sub_name + '.png')
+#plt.savefig("SS_linear_accuracy.png")
+plt.title(main_name + '_' + sub_name)
     

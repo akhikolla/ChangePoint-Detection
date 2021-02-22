@@ -18,7 +18,8 @@ import numpy as np
 ## load the realating csv file
 # get command line argument length.
 #dir_path = "/Users/akhilachowdarykolla/Desktop/neuroblastoma-data/data/detailed/cv/sequenceID/testFolds/1"
-dir_path = "/Users/akhilachowdarykolla/Desktop/neuroblastoma-data/data/systematic/cv/sequenceID/testFolds/6"
+dir_path = sys.argv[1]
+#"/Users/akhilachowdarykolla/Desktop/neuroblastoma-data/data/systematic/cv/sequenceID/testFolds/6"
 model_id = "5"
 
 ## load the realating csv file
@@ -59,7 +60,7 @@ model_path = "model_path/" + dir_path + "/" #+ model_id
 
 #2 jobs give same reource?
 if not os.path.exists(model_path):
-    os.makedirs(model_path) 
+    os.makedirs(model_path)
 PATH = model_path + '/cifar_net.pth'
 torch.save(model.state_dict(), PATH)
 
